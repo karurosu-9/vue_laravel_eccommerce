@@ -12,7 +12,7 @@ class AuthAdminRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,31 @@ class AuthAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['required', 'min:6', 'max:255'],
+        ];
+    }
+
+     public function attributes()
+    {
+        return [
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            // メールアドレスのエラー文
+            'email.required' => ':attributeが入力されていません。',
+            'email.email' => ':attributeはメールアドレスの形式で入力してください。',
+            'email.max' => ':attributeは255文字以内で入力してください。',
+
+            // パスワードのエラー文
+            'password.required' => ':attributeが選択されていません。',
+            'password.min' => ':attributeは 6文字以上で入力してください',
+            'password.max' => ':attributeは 255文字以内で入力してください',
         ];
     }
 }
