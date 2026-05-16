@@ -20,7 +20,7 @@ class AdminController extends Controller
         $monthOrders = Order::whereDay('created_at', Carbon::now()->month)->get();
         $yearOrders = Order::whereDay('created_at', Carbon::now()->year)->get();
 
-        return view('admin.index')->with([
+        return view('admin.dashboard')->with([
             'todayOrders' => $todayOrders,
             'yesterdayOrders' => $yesterdayOrders,
             'monthOrders' => $monthOrders,
@@ -37,7 +37,8 @@ class AdminController extends Controller
             return view('login');
         }
 
-        return redirect()->route('admin.index');
+        // 既に管理者としてログイン済みであれば、dashboardに遷移
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -53,7 +54,7 @@ class AdminController extends Controller
             ])) {
                 // ログイン成功時は、セッションIDを新しく作り直す
                 $request->session()->regenerate();
-                return redirect()->route('admin.index');
+                return redirect()->route('admin.dashboard');
             }else {
                 return redirect()->route('admin.login')->with([
                     'error' => 'メールアドレスとパスワードが一致しません。',
