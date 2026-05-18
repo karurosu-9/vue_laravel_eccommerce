@@ -58,7 +58,7 @@ class AdminController extends Controller
             }else {
                 return redirect()->route('admin.login')->with([
                     'error' => 'メールアドレスとパスワードが一致しません。',
-                ]);
+                ])->withInput();
             }
         }
     }
