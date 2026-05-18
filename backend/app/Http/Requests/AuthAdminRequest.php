@@ -45,7 +45,7 @@ class AuthAdminRequest extends FormRequest
             'email.max' => ':attributeは255文字以内で入力してください。',
 
             // パスワードのエラー文
-            'password.required' => ':attributeが選択されていません。',
+            'password.required' => ':attributeが入力されていません。',
             'password.min' => ':attributeは 6文字以上で入力してください',
             'password.max' => ':attributeは 255文字以内で入力してください',
         ];
