@@ -25,7 +25,7 @@
                             <form action="{{ route('admin.auth') }}" method="post">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control @error('email') is-valid @enderror" id="floatingInput"
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput"
                                         name="email" placeholder="name@example.com">
                                     <label for="floatingInput">Email address*</label>
                                     @error('email')
@@ -37,7 +37,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control @error('password') is-valid @enderror"
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         name="password" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password*</label>
                                     @error('password')
