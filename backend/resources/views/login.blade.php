@@ -26,7 +26,7 @@
                                 @csrf
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput"
-                                        name="email" placeholder="name@example.com">
+                                        name="email" placeholder="name@example.com" value="{{ old('email') }}">
                                     <label for="floatingInput">Email address*</label>
                                     @error('email')
                                         <span class="invalid-feedback">
